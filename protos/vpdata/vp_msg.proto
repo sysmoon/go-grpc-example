@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+import "vp_state.proto";
+import "vp_camera.proto";
+import "vp_sensors.proto";
+
+package vpdata;
+
+option java_package = "msgmanager.protobuf";
+
+message VPHeader {
+	string strSchemaVer = 1;
+	string strDeviceName = 2;
+	string strOSInfo = 3;
+	repeated int32 ars32TelcoPCI = 4;
+	int32 s32TelcoRSSI = 5;
+	uint64 u64TSSend = 6;
+	repeated double arf64LastLoc = 7;
+	repeated float arf32Extrinsic = 8;
+	string strTargetEnv = 9;
+}
+
+message VPBody {	
+	vpdata.state.VPState_t stState = 1;
+	vpdata.camera.Camera_t stCamera = 2;
+	repeated vpdata.sensors.GPS_t stGPS = 3;
+	repeated vpdata.sensors.IMU_t stIMU = 4;
+	repeated vpdata.sensors.Barometer_t stBaroMeter = 5;
+	repeated vpdata.sensors.MCompass_t stMagneticCompass = 6;	
+
+	// 2020.12.01 Updated
+
+	repeated vpdata.sensors.GPSLocationInfo_t stGPSLocationInfo = 7;
+	repeated vpdata.sensors.AccelerometerInfo_t stAccelerometerInfo = 8;
+	repeated vpdata.sensors.GyroscopeInfo_t stGyroscopeInfo = 9;
+	repeated vpdata.sensors.RotationVectorInfo_t stRotationVectorInfo = 10;
+	repeated vpdata.sensors.StepCounterInfo_t stStepCounterInfo = 11;
+	repeated vpdata.sensors.StepDetectorInfo_t stStepDetectorInfo = 12;
+	repeated vpdata.sensors.MagneticFieldInfo_t stMagneticFieldInfo = 13;
+	repeated vpdata.sensors.PressureInfo_t stPressureInfo = 14;
+
+	// Multi-camera
+	repeated vpdata.camera.Camera_t stSubCameras = 21;
+
+}
+	
+message VPData {
+	vpdata.VPHeader stVPHeader = 1;
+	vpdata.VPBody stVPBody = 2;	
+}

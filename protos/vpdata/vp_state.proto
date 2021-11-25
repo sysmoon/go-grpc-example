@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+import "vp_tracking.proto";
+
+package vpdata.state;
+
+option java_package = "msgmanager.protobuf";
+
+message VPState_t {
+	enum VPStatus {
+		eUNKNOWN_STATUS = 0;
+		eINIT = 1;
+		eTRACK = 2;
+		eCOSTING = 3;
+		eFAIL = 4;
+	}
+		
+	VPStatus eVPStatus = 1;
+	uint64 u64TSLastLoc = 2;
+	repeated double arf64LastLocation = 3;
+	repeated float arf32LastOrientation = 4;
+	repeated float arf32LastDRPose = 5;
+	repeated float arf32CurDRPose = 6;
+
+	// Newly added members for Tracking Mode
+
+	vp.tracking.VPStatusTrackingMode eVPStatusTrackingMode = 7;
+	repeated vp.tracking.FramePoseInfo_t stFramePoseInfoSet = 8;
+
+	vp.tracking.KalmanFilter_t stLinearVelocityKF = 9;
+	vp.tracking.KalmanFilter_t stVPSPoseKF = 10;
+
+	repeated vp.tracking.Param_t stParamSet = 11;
+}

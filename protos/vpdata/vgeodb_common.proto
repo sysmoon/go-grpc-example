@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package VgeoDB.common;
+
+option java_package = "vgeodb.common";
+
+message XYZ64_t {
+	double f64X = 1;
+	double f64Y = 2;
+	double f64Z = 3;
+}
+
+message XYZ32_t {
+	float fX = 1;
+	float fY = 2;
+	float fZ = 3;
+}
+
+message Orientation32_t {
+	float fqX = 1;
+	float fqY = 2;
+	float fqZ = 3;
+	float fqW = 4;
+}
+
+message Extrinsic_t {
+	XYZ32_t stTranslate = 1;
+	Orientation32_t stOrientation = 2;
+}
+
+message Point2DInt_t {
+	uint32 unU = 1;
+	uint32 unV = 2;
+}
+
+message Point2DFloat_t {
+	float fU = 1;
+	float fV = 2;
+}
+
+message UVPoint_t {
+	oneof uUVPoint {
+		Point2DInt_t stPointInt = 1;
+		Point2DFloat_t stPointFloat = 2;
+	}
+}

@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package vpdata.sensors;
+option java_package = "msgmanager.protobuf";
+
+message GPS_t {
+	uint64 u64TSCapture = 1;
+	repeated float arf32Pose = 2;
+}
+  
+message IMU_t {
+	uint64 u64TSCapture = 1;
+	repeated float arf32Data = 2;
+}
+
+message Barometer_t {
+	uint64 u64TSCapture = 1;
+	repeated float arf32Data = 2;
+}
+
+message MCompass_t {
+	uint64 u64TSCapture = 1;
+	repeated float arf32Data = 2;
+}
+
+// 2020.12.01 Updated
+// IMU_t -> AccelerometerInfo_t & GyroscopeInfo_t
+// GPS_t -> GPSLocationInfo_t
+// MCompass_t -> MagneticFieldInfo_t
+// Barometer_t -> PressureInfo_t
+
+message GPSLocationInfo_t {
+	uint64 u64TSCapture = 1;
+	double f64Longitude = 2;
+	double f64Latitude= 3;
+	double f64Altitude = 4;
+}
+
+message AccelerometerInfo_t {
+	uint64 u64TSCapture = 1;
+	float f32ax = 2;
+	float f32ay = 3;
+	float f32az = 4;
+}
+
+message GyroscopeInfo_t {
+	uint64 u64TSCapture = 1;
+	float f32gx = 2;
+	float f32gy = 3;
+	float f32gz = 4;
+}
+
+message RotationVectorInfo_t {
+	uint64 u64TSCapture = 1;
+	float f32qx = 2;
+	float f32qy = 3;
+	float f32qz = 4;
+	float f32qw = 5;
+}
+
+message StepCounterInfo_t {
+	uint64 u64TSCapture = 1;
+	uint32 u32StepCounter = 2;
+}
+
+message StepDetectorInfo_t {
+	uint64 u64TSCapture = 1;
+	bool u32StepDetector = 2;
+}
+
+message MagneticFieldInfo_t {
+	uint64 u64TSCapture = 1;
+	float f32mx = 2;
+	float f32my = 3;
+	float f32mz = 4;
+}
+
+message PressureInfo_t {
+	uint64 u64TSCapture = 1;
+	float f32Pressure = 2;
+}
+
+
+
+

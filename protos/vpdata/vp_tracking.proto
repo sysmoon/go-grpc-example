@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+package vp.tracking;
+
+option java_package = "msgmanager.protobuf";
+
+enum VPStatusTrackingMode {
+	eLOST = 0;
+	eINITIALIZED = 1;
+	eLOCALIZED= 2;
+	eTRACKED = 3;
+	eCOSTING = 4;
+	eTRANSITION = 5;
+}
+
+message	Pose_t {
+	double f64X = 1;
+	double f64Y = 2;
+	double f64Z = 3;
+	float f32qX = 4;
+	float f32qY = 5;
+	float f32qZ = 6;
+	float f32qW = 7;
+}
+
+message PoseInfo_t {
+	uint64 u64Timestamp = 1;
+	bool bPoseFlag = 2;
+	float f32PoseConfidence = 3;
+	Pose_t stPose = 4;
+}
+
+message FramePoseInfo_t {
+	PoseInfo_t stVPSPoseInfo = 1;
+	repeated PoseInfo_t stLastDRPoseInfoArray= 2;
+	repeated PoseInfo_t stLastEGPoseInfoArray= 3;
+}
+
+message KalmanFilter_t {
+	repeated double f64State = 1;
+	repeated float f32Covariance = 2;
+}
+
+message Param_t {
+	string strName = 1;
+	int32 s32Val = 2;
+	float f32Val = 3;
+	double f64Val = 4;
+	string strVal = 5;
+	bool bVal = 6;
+}
+
+message MetaTrackingMode_t {
+	VPStatusTrackingMode eVPStatusTrackingMode = 1;
+
+	PoseInfo_t stVPSPoseInfo = 2;
+	Pose_t stCorrectingTr = 3;
+
+	KalmanFilter_t stLinearVelocityKF = 4;
+	KalmanFilter_t stVPSPoseKF = 5;
+}
+

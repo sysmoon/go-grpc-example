@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+import "vgeodb_common.proto";
+
+package vpdata.camera;
+
+option java_package = "msgmanager.protobuf";
+
+message Camera_t {	
+	enum CameraType {
+		eCameraStart = 0;
+		eFront_1 = 1;
+		eFront_2 = 2;
+		eFront_End = 4;
+		eBack_1 = 8;
+		eBack_2 = 16;
+		eBack_3 = 32;
+		eBack_4 = 64;
+		eBack_5 = 128;
+		eBack_6 = 256;
+		eBack_End = 512;
+	}
+	
+	enum Codec {
+		eUNKNOWN_CODEC = 0;
+		eUNCOMPRESSED = 1;
+		eJPG = 2;
+		ePNG = 3;
+	}
+	
+	enum PixelFormat {
+		eUNKNOWN_FORMAT = 0;
+		e8BIT = 10; /* unsigned char */
+		eGRAY8 = 11;
+		eRGB8 = 12;
+		eBGR8 = 13;
+		e16BIT = 20; /* unsigned int16 */
+		eGRAY12 = 21;
+		eGRAY14 = 22;
+		eGRAY16 = 23;
+		eRGB12 = 24;
+		eBGR12 = 25;
+		eRGB14 = 26;
+		eBGR14 = 27;
+		eRGB16 = 28;
+		eBGR16 = 29;
+		e32BIT = 30; /* unsigned int32 or float32 */
+		eGRAY32U = 31;
+		eRGB32U = 32;
+		eBGR32U = 33;
+		eGRAY32F = 34;
+		eRGB32F = 35;
+		eBGR32F = 36;
+		eCOMPRESSED = 50;
+		eYUV420P8 = 51; /* Y, U+V */
+		eYUYV422I8 = 52; /* YUYV */
+		eUYVY422I8 = 53; /* UYVY */
+	}
+	
+	uint64 u64TSCapture = 1;
+	CameraType eCameraType = 2;
+	Codec eCodec = 3;
+	uint32 u16Width = 4;
+	uint32 u16Height = 5;
+	PixelFormat ePixelFormat = 6;
+	bytes imgData = 7;
+
+	// Add Extrinsic
+	VgeoDB.common.Extrinsic_t stExtrinsic = 11;
+}
