@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package prdb.meta;
+
+option java_package = "dbms.prdb";
+option go_package = "github.com/sysmoon/go-grpc-example/protos/vpdata";
+
+import "google/api/annotations.proto";
+
+message XYZ64_t {
+	double f64X = 1;
+	double f64Y = 2;
+	double f64Z = 3;
+}
+
+message XYZ32_t {
+	float f32X = 1;
+	float f32Y = 2;
+	float f32Z = 3;
+}
+
+message Orientation32_t {
+	float f32qX = 1;
+	float f32qY = 2;
+	float f32qZ = 3;
+	float f32qW = 4;
+}
+
+message UVPoint_t {
+	uint32 un32U = 1;
+	uint32 un32V = 2;
+	float f32U = 3;
+	float f32V = 4;
+}
+
+message Meta_t {
+	uint64 u64KeyFrameIndex = 1;
+	uint64 u64Timestamp = 2;
+	prdb.meta.XYZ64_t stAvgLocation = 3;
+	prdb.meta.Orientation32_t stOrientation = 4;
+	prdb.meta.XYZ32_t stDirectionVector = 5;
+
+	repeated prdb.meta.XYZ64_t stLocationSet = 6;
+}

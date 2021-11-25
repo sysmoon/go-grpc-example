@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option go_package = "github.com/sysmoon/go-grpc-example/protos/vpdata";
+option java_package = "vp.service";
+
+import "google/protobuf/wrappers.proto";
+import "prdb_meta.proto";
+import "vp_tracking.proto";
+import "vp_msg.proto";
+import "google/api/annotations.proto";
+
+package vpresult;
+
+service LocationService {
+	rpc getLocationPose (vpdata.VPData) returns (VPService_t) {
+		option (google.api.http) = {
+            post: "/skvps/locdata"
+        };
+	}
+
+	rpc getLocationInfo (vpdata.VPData) returns (.google.protobuf.FloatValue) {} // For later, multi rpc test
+}
+
+message VPService_t {
+	prdb.meta.Meta_t stVPResult = 1;
+
+	// Newly added members for Tracking Mode
+	vp.tracking.MetaTrackingMode_t stVPResultTrackingMode = 2;
+}
