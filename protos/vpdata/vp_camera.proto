@@ -1,10 +1,13 @@
 syntax = "proto3";
 
-import "vgeodb_common.proto";
-
 package vpdata.camera;
 
 option java_package = "msgmanager.protobuf";
+option go_package = "github.com/sysmoon/go-grpc-example/protos/vpdata";
+
+import "google/api/annotations.proto";
+import "vgeodb_common.proto";
+
 
 message Camera_t {	
 	enum CameraType {

@@ -3,6 +3,9 @@ syntax = "proto3";
 package VgeoDB.common;
 
 option java_package = "vgeodb.common";
+option go_package = "github.com/sysmoon/go-grpc-example/protos/vpdata";
+
+import "google/api/annotations.proto";
 
 message XYZ64_t {
 	double f64X = 1;

@@ -1,10 +1,12 @@
 syntax = "proto3";
 
-import "vp_tracking.proto";
-
 package vpdata.state;
 
 option java_package = "msgmanager.protobuf";
+option go_package = "github.com/sysmoon/go-grpc-example/protos/vpdata";
+
+import "google/api/annotations.proto";
+import "vp_tracking.proto";
 
 message VPState_t {
 	enum VPStatus {

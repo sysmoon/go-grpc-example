@@ -1,7 +1,11 @@
 syntax = "proto3";
 
 package vpdata.sensors;
+
 option java_package = "msgmanager.protobuf";
+option go_package = "github.com/sysmoon/go-grpc-example/protos/vpdata";
+
+import "google/api/annotations.proto";
 
 message GPS_t {
 	uint64 u64TSCapture = 1;
