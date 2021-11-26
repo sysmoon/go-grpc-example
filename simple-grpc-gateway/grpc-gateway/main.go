@@ -8,12 +8,12 @@ import (
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"google.golang.org/grpc"
 
-	userpb "github.com/sysmoon/go-grpc-example/protos/vpdata"
+	userpb "github.com/dojinkimm/go-grpc-example/protos/v2/user"
 )
 
 const (
 	portNumber           = "9000"
-	gRPCServerPortNumber = "50051"
+	gRPCServerPortNumber = "9001"
 )
 
 func main() {
@@ -26,7 +26,7 @@ func main() {
 	if err := userpb.RegisterUserHandlerFromEndpoint(
 		ctx,
 		mux,
-		"vpgw.vpslab.co.kr:"+gRPCServerPortNumber,
+		"localhost:"+gRPCServerPortNumber,
 		options,
 	); err != nil {
 		log.Fatalf("failed to register gRPC gateway: %v", err)

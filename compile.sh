@@ -1,6 +1,14 @@
 #!/bin/bash
 
-protoc -I . \
+# gencode
+protoc -I=. \
+        -I protos/vpdata \
+	    --go_out . --go_opt paths=source_relative \
+	    --go-grpc_out . --go-grpc_opt paths=source_relative \
+	    protos/vpdata/vpresult.proto
+
+# grpc-gateway
+protoc -I. \
     -I protos/vpdata \
     --grpc-gateway_out . \
     --grpc-gateway_opt logtostderr=true \
