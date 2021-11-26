@@ -8,7 +8,7 @@ import (
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"google.golang.org/grpc"
 
-	userpb "github.com/sysmoon/go-grpc-example/protos/vpsdata"
+	userpb "github.com/sysmoon/go-grpc-example/protos/v2/vpsdata"
 )
 
 const (
