@@ -2,7 +2,21 @@
 
 # gencode
 protoc -I=. \
-        -I protos/vpdata \
+        -I protos/vpdata/ \
+	    --go_out . --go_opt paths=source_relative \
+	    --go-grpc_out . --go-grpc_opt paths=source_relative \
+	    protos/vpdata/vpresult.proto \
+        protos/vpdata/vgeodb_common.proto
+
+protoc -I=. \
+        -I protos/vpdata/ \
+	    --go_out . --go_opt paths=source_relative \
+	    --go-grpc_out . --go-grpc_opt paths=source_relative \
+        protos/vpdata/vpresult.proto
+
+
+protoc -I=. \
+        -I protos/vpdata/ \
 	    --go_out . --go_opt paths=source_relative \
 	    --go-grpc_out . --go-grpc_opt paths=source_relative \
 	    protos/vpdata/vpresult.proto

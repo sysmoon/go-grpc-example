@@ -5,8 +5,6 @@ package vp.tracking;
 option java_package = "msgmanager.protobuf";
 option go_package = "github.com/sysmoon/go-grpc-example/protos/vpdata";
 
-import "google/api/annotations.proto";
-
 enum VPStatusTrackingMode {
 	eLOST = 0;
 	eINITIALIZED = 1;

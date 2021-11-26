@@ -5,7 +5,6 @@ package vpdata;
 option java_package = "msgmanager.protobuf";
 option go_package = "github.com/sysmoon/go-grpc-example/protos/vpdata";
 
-import "google/api/annotations.proto";
 import "vp_state.proto";
 import "vp_camera.proto";
 import "vp_sensors.proto";
