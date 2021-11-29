@@ -5,5 +5,5 @@ package vpdata;
 option go_package = "github.com/sysmoon/go-grpc-example/protos/v1/user";
 
 message UserDetailMessage {
-    string sex = 2;
+    string sex = 1;
 }
