@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "user_detail.proto";
+
 package v1.user;
 
 option go_package = "github.com/sysmoon/go-grpc-example/protos/v1/user";
@@ -14,6 +16,7 @@ message UserMessage {
     string name = 2;
     string phone_number = 3;
     int32 age = 4;
+    vpdata.UserDetailMessage user_detail = 5;
 }
 
 message GetUserRequest {
