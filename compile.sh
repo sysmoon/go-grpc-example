@@ -1,12 +1,41 @@
 #!/bin/bash
 
 
-# protos/v1/user/user.proto
+# # protos/v1/user/user.proto
+# protoc -I=. \
+# 		-I=protos/v1/user \
+# 		--go_out . --go_opt paths=source_relative \
+# 		--go-grpc_out . --go-grpc_opt paths=source_relative \
+# 		protos/v1/user/user.proto \
+
+
+# protoc -I=. \
+# 		--proto_path=protos/v1/user \
+# 		--go_out . --go_opt paths=source_relative \
+# 		--go-grpc_out . --go-grpc_opt paths=source_relative \
+# 		protos/v1/user/user.proto \
+# 		protos/v1/user/user_detail.proto
+
+
 protoc -I=. \
 		-I=protos/v1/user \
-	    --go_out . --go_opt paths=source_relative \
-	    --go-grpc_out . --go-grpc_opt paths=source_relative \
-	    protos/v1/user/user.proto
+		--go_out . --go_opt paths=source_relative \
+		--go-grpc_out . --go-grpc_opt paths=source_relative \
+		protos/v1/user/user_detail.proto \
+
+
+protoc -I=. \
+		-I=protos/v1/user \
+		--go_out . --go_opt paths=source_relative \
+		--go-grpc_out . --go-grpc_opt paths=source_relative \
+		protos/v1/user/user.proto \
+
+
+# protoc -I=. \
+# 		--go_out . --go_opt paths=source_relative \
+# 		--go-grpc_out . --go-grpc_opt paths=source_relative \
+# 		protos/v1/user/user_detail.proto \
+
 
 ## gencode
 #protoc -I=. \
